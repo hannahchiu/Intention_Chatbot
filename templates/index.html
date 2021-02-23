@@ -339,7 +339,7 @@ textarea {
                          style="overflow-y: scroll !important; height:400px !important;">
                         <div id="chatbox">
                             <div class="media media-chat"><img class="avatar"
-                                                               src="https://img.icons8.com/color/36/000000/administrator-female.png"
+                                                               src="https://img.icons8.com/doodle/48/000000/girl.png"
                                                                alt="...">
                                 <div class="media-body">
                                     <p>Hi</p>
@@ -374,7 +374,7 @@ textarea {
                     </div>
 <!--                                        <form>-->
                                             <div class="publisher bt-1 border-light"><img class="avatar avatar-xs"
-                                                                                          src="https://img.icons8.com/color/36/000000/administrator-female.png"
+                                                                                          src="https://img.icons8.com/doodle/48/000000/girl.png"
                                                                                           alt="...">
                                                 <div id="userInput">
                                                 <input id="textInput" name="msg" class="publisher-input" type="text"
@@ -403,7 +403,7 @@ textarea {
           $("#chatbox").append(userHtml);
 
           $.get("/get", { msg: rawText }).done(function(data) {
-            var botHtml = '<div class="media media-chat"><img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-female.png" alt="..."><div class="media-body"><p>' + data + "</p></div></div>";
+            var botHtml = '<div class="media media-chat"><img class="avatar" src="https://img.icons8.com/doodle/48/000000/girl.png" alt="..."><div class="media-body"><p>' + data + "</p></div></div>";
             $("#chatbox").append(botHtml);
 
           });
