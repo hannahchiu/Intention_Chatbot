@@ -97,7 +97,9 @@ h4.card-title {
     -ms-touch-action: auto;
     touch-action: auto;
     overflow: hidden !important;
-    -ms-overflow-style: none
+    -ms-overflow-style: none;
+<!--    display: flex;-->
+<!--    flex-direction: column-reverse;-->
 }
 
 .media-chat {
@@ -405,6 +407,9 @@ textarea {
             $("#chatbox").append(botHtml);
 
           });
+<!--          var element = document.getElementById("chat-content");-->
+<!--          element.scrollTop = element.scrollHeight;-->
+          $('#chat-content').animate({ scrollTop: $(document).height() }, "slow");
         }
         $("#textInput").keypress(function(e) {
           if (e.which == 13) {
