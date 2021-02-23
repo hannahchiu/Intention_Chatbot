@@ -7,12 +7,18 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+#
+# @app.route('/', methods=['POST'])
+# def upload():
+#     output = request.values['news']
+#     print(output)
+#     return render_template("index.html", res=output)
 
-@app.route('/', methods=['POST'])
-def upload():
-    output = request.values['news']
-    print(output)
-    return render_template("index.html", res=output)
+
+@app.route("/get")
+def get_bot_response():
+    userText = request.args.get('msg')
+    return userText
 
 
 if __name__ == '__main__':

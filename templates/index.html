@@ -1,4 +1,5 @@
 <!doctype html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <html>
 <head>
     <meta charset='utf-8'>
@@ -315,11 +316,13 @@ textarea {
 
 
 
+
+
     </style>
-    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script type='text/javascript'
-            src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
-    <script type='text/javascript'></script>
+    <!--    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>-->
+    <!--    <script type='text/javascript'-->
+    <!--            src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>-->
+    <!--    <script type='text/javascript'></script>-->
 </head>
 <body oncontextmenu='return false' class='snippet-body'>
 <div class="page-content page-container" id="page-content">
@@ -332,31 +335,34 @@ textarea {
                     </div>
                     <div class="ps-container ps-theme-default ps-active-y" id="chat-content"
                          style="overflow-y: scroll !important; height:400px !important;">
-                        <div class="media media-chat"><img class="avatar"
-                                                           src="https://img.icons8.com/color/36/000000/administrator-female.png"
-                                                           alt="...">
-                            <div class="media-body">
-                                <p>Hi</p>
+                        <div id="chatbox">
+                            <div class="media media-chat"><img class="avatar"
+                                                               src="https://img.icons8.com/color/36/000000/administrator-female.png"
+                                                               alt="...">
+                                <div class="media-body">
+                                    <p>Hi</p>
+                                </div>
                             </div>
+
+                            <div class="media media-chat media-chat-reverse">
+                                <div class="media-body">
+                                    <p>Hiii, I'm good.</p>
+                                </div>
+                            </div>
+                            <div class="media media-chat"><img class="avatar"
+                                                               src="https://img.icons8.com/color/36/000000/administrator-female.png"
+                                                               alt="...">
+                                <div class="media-body">
+                                    <p>Okay</p>
+                                </div>
+                            </div>
+                            <!--                            <div class="media media-chat media-chat-reverse">-->
+                            <!--                                <div class="media-body">-->
+                            <!--                                    <p>{{res}}</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
                         </div>
 
-                        <div class="media media-chat media-chat-reverse">
-                            <div class="media-body">
-                                <p>Hiii, I'm good.</p>
-                            </div>
-                        </div>
-                        <div class="media media-chat"><img class="avatar"
-                                                           src="https://img.icons8.com/color/36/000000/administrator-female.png"
-                                                           alt="...">
-                            <div class="media-body">
-                                <p>Okay</p>
-                            </div>
-                        </div>
-                        <div class="media media-chat media-chat-reverse">
-                            <div class="media-body">
-                                <p>{{res}}</p>
-                            </div>
-                        </div>
                         <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
                             <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
                         </div>
@@ -364,17 +370,20 @@ textarea {
                             <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
                         </div>
                     </div>
-                    <form action="/" method="post">
-                        <div class="publisher bt-1 border-light"><img class="avatar avatar-xs"
-                                                                      src="https://img.icons8.com/color/36/000000/administrator-female.png"
-                                                                      alt="...">
-                            <input name="news" class="publisher-input" type="text"
-                                   placeholder="Write something">
-                            <button
-                                    type="submit" class="publisher-btn text-info" data-abc="true"><i
-                                    class="fa fa-paper-plane"></i></button>
-                        </div>
-                    </form>
+                    <!--                    <form>-->
+                    <!--                        <div class="publisher bt-1 border-light"><img class="avatar avatar-xs"-->
+                    <!--                                                                      src="https://img.icons8.com/color/36/000000/administrator-female.png"-->
+                    <!--                                                                      alt="...">-->
+                    <!--                            <input id="textInput" name="msg" class="publisher-input" type="text"-->
+                    <!--                                   placeholder="Write something">-->
+                    <!--                            <button-->
+                    <!--                                    type="submit" class="publisher-btn text-info" data-abc="true"><i-->
+                    <!--                                    class="fa fa-paper-plane"></i></button>-->
+                    <!--                        </div>-->
+                    <!--                    </form>-->
+                    <div id="userInput">
+                        <input id="textInput" type="text" name="msg" placeholder="Message"/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -382,3 +391,26 @@ textarea {
 </div>
 </body>
 </html>
+
+<script>
+        function getBotResponse() {
+          var rawText = $("#textInput").val();
+          var userHtml = '<div class="media media-chat media-chat-reverse"><div class="media-body"><p>' + rawText + "</p></div></div>";
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+
+          $.get("/get", { msg: rawText }).done(function(data) {
+            var botHtml = '<div class="media media-chat"><img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-female.png" alt="..."><div class="media-body"><p>' + rawText + "</p></div></div>";
+            $("#chatbox").append(botHtml);
+
+          });
+        }
+        $("#textInput").keypress(function(e) {
+          if (e.which == 13) {
+            getBotResponse();
+          }
+        });
+
+
+
+</script>
