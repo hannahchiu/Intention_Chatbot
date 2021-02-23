@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+<!-- {% block css %}{% endblock %} -->
+
+{% block content %}
+
+
+<!-- <div class="row mx-5"> -->
+    <!-- <div class="clearfix mx-md-5 mx-sm-3"> -->
+        <div class="row mx-md-5 mx-sm-3" id="intentions">
+            {% for cmd_en, cmd_zh in cmd_list %}
+                <!-- <div class="intention_block {% if cmd == cmd_en %}red{% endif %}"> -->
+                <!-- <form action="/?pattern={{ cmd_en }}" method="post"> -->
+                    <!-- <button type="button" class="btn {% if cmd == cmd_en %} btn-success {% else %} btn-info {% endif %} my-3 mx-3"> -->
+                        <a href="./?pattern={{ cmd_en }}" class="btn {% if intent == cmd_en %} btn-success {% else %} btn-info {% endif %} my-3 mx-3 text-white">
+                            <p class="my-3"> {{ cmd_en }} {{ cmd_zh }} </p> 
+                        </a>
+                        <!-- {{ cmd_en }} {{ cmd_zh }} -->
+                    <!-- </button> -->
+                <!-- </form> -->
+                    
+            {% endfor %}
+        </div>
+    <!-- </div> -->
+        
+<!-- </div> -->
+
+{% endblock %}

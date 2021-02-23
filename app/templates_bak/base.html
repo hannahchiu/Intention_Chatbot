@@ -1,0 +1,64 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }}</title>
+      {% else %}
+      <title>Intention Demo</title>
+      {% endif %}
+      <link rel="stylesheet" type="text/css" href=".{{ url_for('static', filename='css/main.css') }}">
+      <link rel="stylesheet" type="text/css" href=".{{ url_for('static', filename='css/block.css') }}">
+      <link rel="icon" href="data:;base64,=">
+      <!-- <script type="text/javascript">
+        $('#b1').click(() => {
+          console.log("clicked!")
+        })
+      </script>> -->
+    </head>
+    <body>
+        <!-- <div>Microblog: <a href="/index">Home</a></div> -->
+        <hr>
+        <h1>{{ title }}</h1>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                <div class="inputbox">
+                {{ form.inputtext.label }}<br>
+                {{ form.inputtext(class_="inputtext") }}
+                {% for error in form.inputtext.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                </div>
+            </p>
+
+            <p>{{ form.submit(class_="submit") }}</p>
+        </form>
+
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <p>
+            {% for message in messages %}
+              {% if message[:7] != 'Pattern' %}
+              <h3>{{ message }}</h3>
+              {% endif %}
+            {% endfor %}
+        </p>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+        <!-- <div class="clearfix"> -->
+          <div class="pattern"> 
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for message in messages %}
+                {% if message[:7] == 'Pattern' %}
+                <h3>{{ message }}</h3>
+                {% endif %}              
+              {% endfor %}
+            {% endif %}
+            {% endwith %}
+          </div>
+    </section>
+    </body>
+</html>

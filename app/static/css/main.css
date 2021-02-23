@@ -1,0 +1,15 @@
+.inputbox{
+    font-size: 20px;
+}
+.inputtext{
+    height: 40px;
+    width: 500px;
+    margin: 10px 0 0 0;
+    font-size: 15px;
+}
+.submit{
+    height: 30px;
+    width: 55px;
+    font-size: auto;
+}
+

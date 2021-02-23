@@ -1,0 +1,83 @@
+/* projects */
+.intentions { margin: 0px 0px 60px; }
+/*.intention_row::after {
+    content: "";
+    clear: both;
+    display: table;
+}*/
+input {
+  font-size: 12px;
+}
+.btn-info {
+  float: left;
+  width: 220px;
+  height: 70px;
+  padding: 0;
+  display: flex;
+}
+
+.btn-success {
+  float: left;
+  width: 220px;
+  height: 70px;
+  padding: 0;
+  display: flex;
+}
+
+.btn-info my-4{
+  margin: auto;
+  vertical-align: middle;
+  font-family: courier, 'Cambria', 'Verdana', 'Calibri';
+}
+
+
+
+.intention_block.red {
+  background-color: #ebb0bd;
+
+}
+.intention_block.red h4{
+  /*color: white;*/
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.pattern {
+  /*float: left;*/
+  margin: 20px 20px 0 0;
+  height: 50px;
+  padding: 30px;
+  /*width: 100%;*/
+  border: 1px solid gray;
+}
+
+.button {
+  width: 100%;
+  height: 100%;
+}
+
+.suggestion {
+  /*float: left;*/
+  height: auto;
+  /*padding: 30px;*/
+  /*width: 100%;*/
+  border: 1px solid gray;
+}
+
+.bd-callout {
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #eee;
+    border-left-width: .25rem;
+    border-radius: .25rem;
+    /*display: block;*/
+}
+
+
+.bd-callout-warning {
+    border-left-color: #f0ad4e;
+}
